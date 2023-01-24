@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "ap1/v1/students")
+@RequestMapping(path = "api/v1/students")
 public class StudentController {
     @GetMapping
     public List<Student> getAllStudents(){
