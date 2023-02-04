@@ -1,8 +1,7 @@
 package com.example.demo.student;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +9,30 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/students")
 public class StudentController {
-    @GetMapping
-    public List<Student> getAllStudents(){
-        return Arrays.asList(
-                new Student(1l, "Elkin", "elkin@gmail.com", Gender.MALE),
-                new Student(2l, "Alex", "alex@gmail.com", Gender.FEMALE)
-        );
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
+
+
+    @GetMapping
+    public List<Student> getAllStudent (){
+        //throw new IllegalStateException("Opps que embarrada");
+        return studentService.getAllStudent();
+    }
+
+    @PostMapping
+    public void addStudent (@Valid @RequestBody Student student){
+        studentService.addStudent(student);
+    }
+
+    @DeleteMapping(path = "{studentId}")
+    public void deleteStudent (@PathVariable("studentId") Long studentId)
+    {
+        studentService.deleteStudent(studentId);
+    }
+
+
 
 }
