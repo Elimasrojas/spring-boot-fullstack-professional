@@ -3,6 +3,7 @@ package com.example.demo.student;
 import com.example.demo.student.exception.BabRequestException;
 import com.example.demo.student.exception.StudentNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class StudentService {
         Boolean existsEmail=studentRepository.selectExistsEmail(student.getEmail());
         if(existsEmail){
             //throw new IllegalStateException("Opps que embarrada");
-            throw new BabRequestException("Email "+student.getEmail()+ " taken" );
+            throw new BabRequestException("p-400","Email "+student.getEmail()+ " taken" );
         }
         studentRepository.save(student);
     }
@@ -36,7 +37,7 @@ public class StudentService {
     public void deleteStudent(Long studentId) {
         //cheque si existe promero
         if(!studentRepository.existsById(studentId)){
-            throw new StudentNotFoundException("Student With id:"+ studentId+ " does no exist");
+            throw new StudentNotFoundException("p-502","Student With id:"+ studentId+ " does no exist");
         }
         studentRepository.deleteById(studentId);
     }

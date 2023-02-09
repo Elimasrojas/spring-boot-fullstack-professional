@@ -26,7 +26,7 @@ public class Student {
             generator = "student_sequence",
             strategy = GenerationType.SEQUENCE)
     private Long id;
-    @NotBlank
+    @NotBlank(message = "Carajo el nombre no puede estar vacio")
     @Column(nullable = false)
     private String name;
     @Email
