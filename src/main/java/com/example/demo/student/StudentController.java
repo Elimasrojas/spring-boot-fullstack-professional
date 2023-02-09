@@ -24,6 +24,9 @@ public class StudentController {
 
     @PostMapping
     public void addStudent (@Valid @RequestBody Student student){
+        if(student.getEmail().equals("") || student.getEmail()== null ){
+            throw  new RuntimeException("Email es requerido");
+        }
         studentService.addStudent(student);
     }
 

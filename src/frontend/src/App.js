@@ -1,7 +1,22 @@
 import './App.css';
 import {useState, useEffect} from "react";
 import {deleteStudent, getAllStudents} from "./client";
-import {Breadcrumb, Layout, Menu, theme, Table, Spin, Empty, Button, Badge, Tag, Avatar, Radio, Popconfirm} from "antd";
+import {
+    Breadcrumb,
+    Layout,
+    Menu,
+    theme,
+    Table,
+    Spin,
+    Empty,
+    Button,
+    Badge,
+    Tag,
+    Avatar,
+    Radio,
+    Popconfirm,
+    Image
+} from "antd";
 import {
     DesktopOutlined,
     FileOutlined,
@@ -222,7 +237,9 @@ function App() {
                 </div>
             </Content>
             <Footer style={{textAlign: 'center',}}>
-                by ELR ©2023
+                <Image width={75}
+                       src={"https://user-images.githubusercontent.com/18513829/217678137-4eecc4f1-b2a4-43fc-8542-d4ae12ece7b0.png"}
+                />
             </Footer>
         </Layout>
     </Layout>);
